@@ -1,48 +1,47 @@
-
 var offset = $('#main-nav').offset();
-$(window).scroll(function(){
+$(window).scroll(function () {
     $('#main-nav').addClass('fixed-nav');
-    if($(document).scrollTop() < 150){
+    if ($(document).scrollTop() < 150) {
         $('#main-nav').removeClass('fixed-nav');
     }
 });
 
 // jQuery extend functions for popup
-(function($) {
-    $.fn.openPopup = function( settings ) {
+(function ($) {
+    $.fn.openPopup = function (settings) {
         var elem = $(this);
         // Establish our default settings
         var settings = $.extend({
             anim: 'fade'
         }, settings);
         elem.show();
-        elem.find('.popup-content').addClass(settings.anim+'In');
+        elem.find('.popup-content').addClass(settings.anim + 'In');
     };
 
-    $.fn.closePopup = function( settings ) {
+    $.fn.closePopup = function (settings) {
         var elem = $(this);
         // Establish our default settings
         var settings = $.extend({
             anim: 'fade'
         }, settings);
-        elem.find('.popup-content').removeClass(settings.anim+'In').addClass(settings.anim+'Out');
+        elem.find('.popup-content').removeClass(settings.anim + 'In').addClass(settings.anim + 'Out');
 
-        setTimeout(function(){
+        setTimeout(function () {
             elem.hide();
-            elem.find('.popup-content').removeClass(settings.anim+'Out')
+            elem.find('.popup-content').removeClass(settings.anim + 'Out')
         }, 500);
     }
 
 }(jQuery));
 
 // Click functions for popup
-$('.open-popup').click(function(){
-    $('#'+$(this).data('id')).openPopup({
+$('.open-popup').click(function () {
+    $('#' + $(this).data('id')).openPopup({
         anim: (!$(this).attr('data-animation') || $(this).data('animation') == null) ? 'fade' : $(this).data('animation')
     });
 });
-$('.close-popup').click(function(){
-    $('#'+$(this).data('id')).closePopup({
+$('.close-popup').click(function () {
+    $('#' + $(this).data('id')).closePopup({
         anim: (!$(this).attr('data-animation') || $(this).data('animation') == null) ? 'fade' : $(this).data('animation')
     });
 });
